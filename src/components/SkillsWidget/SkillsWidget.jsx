@@ -1,0 +1,57 @@
+import "./SkillsWidget.css";
+import PropTypes from "prop-types";
+
+/* TODO:
+  Fill out this component according to the README.
+*/
+
+const SkillsWidget = ({ title, content, skills }) => {
+  return (
+    <section data-testid="skillsWidget" className="skills-widget">
+      <h2 data-testid="skillsWidgetTitle">{title}</h2>
+      <p data-testid="skillsWidgetContent">{content}</p>
+      <ul>
+        {skills.map(
+          (item, idx) => (
+            console.log(item + " " + idx),
+            (
+              <li key={idx} data-testid={`skillsWidgetItem${idx}`}>
+                <div className="skills-item">
+                  <img data-testid={`skillsWidgetItemLogo${idx}`} src={item.icon} alt={`${item.name} Icon`} />
+                  <div className="skills-item-content">
+                    <h3 data-testid={`skillsWidgetItemName${idx}`}>{item.name}</h3>
+                    <div className="skills-item-proficiency">
+                      <div
+                        data-testid={`skillsWidgetItemProficiency${idx}`}
+                        className="proficiency-bar"
+                        style={{ width: `${item.proficiency}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            )
+          )
+        )}
+      </ul>
+    </section>
+  );
+};
+
+SkillsWidget.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  skills: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      proficency: PropTypes.string.isRequired,
+    })
+  ),
+};
+
+SkillsWidget.defaultProps = {
+  skills: [],
+};
+
+export default SkillsWidget;

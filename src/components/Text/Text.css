@@ -1,0 +1,21 @@
+.text-component {
+  font-family: "Inter", sans-serif;
+  color: black;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  /* border: 1px solid #e0e0e0;
+  border-radius: 6px;*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.dark .text-component {
+  color: white;
+}

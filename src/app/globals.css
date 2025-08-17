@@ -3,31 +3,50 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+  /* Light mode */
+  --light-bg: #f7f7f7;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  /* Dark mode */
+  --dark-bg: #232323;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--light-bg);
+  color: black;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+body.dark {
+  background-color: var(--dark-bg);
+  color: white;
+}
+
+body.dark * {
+  background-color: var(--dark-bg);
+  /*color: white;*/
+}
+body.dark p,
+body.dark h2,
+body.dark h3 {
+  color: white; /* Example: yellow text in dark mode */
+}
+body.dark button {
+  background-color: #412e96;
+  color: #d4dbff;
+}
+body.dark .proficiency-bar {
+  background-color: #14b8a6;
+  border-radius: 4px;
+}
+body.dark .skills-item-proficiency {
+  background: #3e3e3e;
+  border-radius: 4px;
+}
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-content {
+  flex: 1;
 }
