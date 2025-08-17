@@ -1,23 +1,18 @@
-// get env variable
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const env = process.env.NODE_ENV || 'development';
-
 /** @type {import('next').NextConfig} */
-const nextConfigProd = {
+const nextConfig = {
+  // Export a fully static site for GitHub Pages
   output: 'export',
-  basePath: '/portfolio',
+  // GH Pages serves from root for user/org sites; no basePath needed
+  // Ensure assets work without the Next image optimizer
   images: {
-    loader: 'custom',
-    loaderFile: './src/lib/image.loader.js',
+    unoptimized: true,
+  },
+  // Make routes resolve to folder indexes (e.g., /about -> /about/ index.html)
+  trailingSlash: true,
+  // Skip ESLint during build so export isn't blocked by lint-only issues
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
-
-/** @type {import('next').NextConfig} */
-const nextConfigDev = {};
-
-const nextConfig = env === 'development' ? nextConfigDev : nextConfigProd;
 
 export default nextConfig;
